@@ -121,7 +121,7 @@ class _Quaternion:
         return np.linalg.norm(v)
 
 
-def visualize_transition(circuit, trace=False, saveas=None, fpg=100, spg=2):
+def visualize_transition(circuit, trace=False, saveas=None, fpg=100, spg=2, jupyter_embed_size_limit_mb=100):
     """
     Creates animation showing transitions between states of a single
     qubit by applying quantum gates.
@@ -340,9 +340,10 @@ def visualize_transition(circuit, trace=False, saveas=None, fpg=100, spg=2):
 
     if saveas:
         ani.save(saveas, fps=30)
+    
     if jupyter:
         # This is necessary to overcome matplotlib memory limit
-        matplotlib.rcParams["animation.embed_limit"] = 50
+        matplotlib.rcParams["animation.embed_limit"] = jupyter_embed_size_limit_mb
         return HTML(ani.to_jshtml())
     plt.show()
     plt.close(fig)
