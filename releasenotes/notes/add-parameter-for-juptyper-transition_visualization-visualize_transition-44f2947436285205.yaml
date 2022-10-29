@@ -1,0 +1,15 @@
+---
+prelude: >
+    No parameter exists to increase memory for large visualize_transitions
+    rendering. The memory allocated for jupyterlab notebooks is hard coded
+    to 50mb
+features:
+  - |
+    a parameter was added which the user can optionally change the max size
+    limit with the default raised from 50 to 100MB
+    parameter added: jupyter_embed_size_limit_mb=100
+fixes:
+  - |
+    This fixes the problem of having a hardcoded 50MB threshold for generating
+    animated visualizations using the visualize_transition function from
+    qiskit\visualization\transition_visualization.py file.
